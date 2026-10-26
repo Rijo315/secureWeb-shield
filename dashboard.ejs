@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Protected Dashboard | SecureWeb Shield</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="navbar">
+    <h2>SecureWeb Shield</h2>
+    <span>Protected Dashboard</span>
+  </header>
+
+  <main class="container">
+    <p><strong>USER DASHBOARD</strong></p>
+
+    <h1>Welcome, <%= username %>!</h1>
+
+    <p>
+      Explore the security demonstrations available in your account.
+    </p>
+
+    <section class="event-list">
+      <article class="event-card">
+        <p><strong>XSS</strong></p>
+        <h2>Cross-Site Scripting</h2>
+        <p>Learn why untrusted input must be displayed safely.</p>
+        <a href="/security-lab">Open Security Lab</a>
+      </article>
+
+      <article class="event-card">
+        <p><strong>CSRF</strong></p>
+        <h2>Cross-Site Request Forgery</h2>
+        <p>Explore server-side token validation for protected actions.</p>
+        <a href="/security-lab">Explore CSRF Protection</a>
+      </article>
+
+      <article class="event-card">
+        <h2>Security Events</h2>
+        <p>Review recent security activity recorded by the application.</p>
+        <a href="/events">View Security Events</a>
+      </article>
+    </section>
+
+    <form action="/logout" method="POST">
+      <input
+        type="hidden"
+        name="_csrf"
+        value="<%= csrfToken %>"
+      >
+      <button type="submit">Log Out</button>
+    </form>
+
+    <p><a href="/">Back to Home</a></p>
+  </main>
+
+  <footer class="container">
+    <p>SecureWeb Shield · Educational Security Project</p>
+  </footer>
+</body>
+</html>

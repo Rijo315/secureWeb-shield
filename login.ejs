@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | SecureWeb Shield</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Welcome back</h1>
+    <p class="intro">Log in to access your security dashboard.</p>
+
+    <% if (error) { %>
+      <p role="alert"><%= error %></p>
+    <% } %>
+
+    <form action="/login" method="POST">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+      <label for="login">Username or email</label>
+      <input
+        id="login"
+        name="login"
+        type="text"
+        required
+        maxlength="254"
+        autocomplete="username"
+      >
+
+      <label for="password">Password</label>
+      <input
+        id="password"
+        name="password"
+        type="password"
+        required
+        maxlength="72"
+        autocomplete="current-password"
+      >
+
+      <button type="submit">Log In</button>
+    </form>
+
+    <p>
+      <a href="/">Home</a> ·
+      <a href="/register">Create an account</a>
+    </p>
+  </main>
+</body>
+</html>
